@@ -5,21 +5,21 @@
 #include <vector>
 #include <sstream>
 
-String grimReaper =  "             ___\n"
-                   "            /   \\\\\n"
-                   "       /\\\\ | . . \\\\\n"
-                   "     ////\\\\|     ||\n"
-                   "   ////   \\\\ ___//_\n"
-                   "  ///      \\\\      \\\n"
-                   " ///       |\\\\      \\\n"
-                   "//         | \\\\   \\  \\\n"
-                   "/          |  \\\\   \\  \\\n"
-                   "           |   \\\\  /  /\n"
-                   "           |    \\ /  /\n"
-                   "           |     \\\\ /\n"
-                   "           |      \\\\|\n"
-                   "           |       \\\\\n"
-                   "           |________|\\\n";
+String grimReaper = "             ___\n"
+                    "            /   \\\\\n"
+                    "       /\\\\ | . . \\\\\n"
+                    "     ////\\\\|     ||\n"
+                    "   ////   \\\\ ___//_\n"
+                    "  ///      \\\\      \\\n"
+                    " ///       |\\\\      \\\n"
+                    "//         | \\\\   \\  \\\n"
+                    "/          |  \\\\   \\  \\\n"
+                    "           |   \\\\  /  /\n"
+                    "           |    \\ /  /\n"
+                    "           |     \\\\ /\n"
+                    "           |      \\\\|\n"
+                    "           |       \\\\\n"
+                    "           |________|\\\n";
 
 void setup()
 {
@@ -28,28 +28,34 @@ void setup()
 
 void loop()
 {
-  if (Serial.available() > 0) {
+  if (Serial.available() > 0)
+  {
     String info = Serial.readString();
     String strs[2];
     int StringCount = 0;
 
-    while (info.length() > 0) {
+    while (info.length() > 0)
+    {
       int index = info.indexOf(' ');
-      if(index == -1) {
+      if (index == -1)
+      {
         strs[StringCount++] = info;
         info = '\0';
-      } else {
+      }
+      else
+      {
         strs[StringCount++] = info.substring(0, index);
-        info = info.substring(index+1);
+        info = info.substring(index + 1);
       }
     }
 
     String years = strs[1] + " years";
-    if (strs[1] == "1"){
+    if (strs[1] == "1")
+    {
       years = strs[1] + " year";
     }
 
-    String expiration = String("    You are due to expire in \n          "+ years + "." );
+    String expiration = String("    You are due to expire in \n          " + years + ".");
 
     Serial.println("\n********************************");
     Serial.println(expiration);
@@ -58,6 +64,5 @@ void loop()
     Serial.println("I'll be waiting for you.");
     Serial.println("********************************");
     Serial.println("********************************");
-
   }
 }

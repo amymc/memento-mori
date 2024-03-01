@@ -1,6 +1,6 @@
 Life expectancy data taken from https://usa.mortality.org/national.php?national=USA
 
-Set up:
+Set up:\
 <img src="https://github.com/amymc/memento-mori/assets/1708243/654edb66-6499-4b3d-91e9-99093e1267e5" data-canonical-src="(https://github.com/amymc/memento-mori/assets/1708243/654edb66-6499-4b3d-91e9-99093e1267e5)" width="400" />
 
 Somewhat based on this tutorial - https://www.twilio.com/en-us/blog/go-old-school-build-a-pager-using-arduino-node-js-and-twilio-html

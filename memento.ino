@@ -1,9 +1,4 @@
-#include <Bridge.h>
-#include <HttpClient.h>
-#include <ArduinoJson.h>
 #include <string>
-#include <vector>
-#include <sstream>
 
 String grimReaper = "             ___\n"
                     "            /   \\\\\n"
@@ -34,20 +29,9 @@ void loop()
     String strs[2];
     int StringCount = 0;
 
-    while (info.length() > 0)
-    {
-      int index = info.indexOf(' ');
-      if (index == -1)
-      {
-        strs[StringCount++] = info;
-        info = '\0';
-      }
-      else
-      {
-        strs[StringCount++] = info.substring(0, index);
-        info = info.substring(index + 1);
-      }
-    }
+    int index = info.indexOf(' ');
+    strs[0] = info.substring(0, index);
+    strs[1] = info.substring(index + 1);
 
     String years = strs[1] + " years";
     if (strs[1] == "1")

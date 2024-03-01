@@ -19,4 +19,3 @@ e.g. `Jane 30 f`
 Take the receipt that shows how much estimated time you have left!
 
 <img src="https://github.com/amymc/memento-mori/assets/1708243/8860e294-d8fd-4634-b973-d555ff25adca" data-canonical-src="(https://github.com/amymc/memento-mori/assets/1708243/654edb66-6499-4b3d-91e9-99093e1267e5)" width="400" />
-![IMG_0965](https://github.com/amymc/memento-mori/assets/1708243/8860e294-d8fd-4634-b973-d555ff25adca)

@@ -3,7 +3,7 @@ name: Deploy website
 on:
   push:
     branches:
-      - ireland
+      - "ireland"
   pull_request:
 
 jobs:

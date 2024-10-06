@@ -1,0 +1,24 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  background-color: black;
+  color: white;
+  font-family: "Arial", sans-serif;
+}
+
+p {
+  display: flex;
+  flex-direction: column;
+  margin: 2em 0;
+}
+
+input,
+select {
+  border-radius: 6px;
+}

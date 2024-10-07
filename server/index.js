@@ -4,8 +4,7 @@ const bodyParser = require("body-parser");
 const fs = require("fs");
 const { parse } = require("csv-parse");
 const sanitizeHtml = require("sanitize-html");
-
-var Printer = require("node-printer");
+var cors = require("cors");
 
 // const { ReadlineParser } = require("@serialport/parser-readline");
 let expectancyData = { m: {}, f: {} };
@@ -39,9 +38,11 @@ const readData = () => {
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 
 app.post("/participants", function (req, res) {
   try {
+    console.log("req", req);
     console.log("req", req.body);
     const { name, age, sex } = req.body;
     const userExpectancy = expectancyData[sanitizeHtml(sex)][sanitizeHtml(age)];
@@ -49,8 +50,11 @@ app.post("/participants", function (req, res) {
     // console.log(`${name} ${age}`);
 
     // serialPort.write(`${sanitizeHtml(name)} ${userExpectancy}`);
+    res.status(200).send();
   } catch (error) {
     console.error(error);
+
+    res.status(500).send();
   }
 });
 

@@ -22,3 +22,7 @@ input,
 select {
   border-radius: 6px;
 }
+
+.message {
+  display: none;
+}

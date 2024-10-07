@@ -16,4 +16,4 @@ jobs:
         if: github.ref == 'refs/heads/ireland'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ../client # deploy client folder
+          publish_dir: ./client # deploy client folder

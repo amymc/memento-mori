@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- <script async src="./index.js"></script> -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💀</text></svg>"
+    />
+
+    <title>Memento Mori</title>
+  </head>
+  <body>
+    <form id="form">
+      <h1>Memento Mori 💀</h1>
+      <p>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" />
+      </p>
+      <p>
+        <label for="mail">Age</label>
+        <input type="number" min="0" step="1" max="110" id="age" name="age" />
+      </p>
+      <p>
+        <label for="sex-select">Sex</label>
+
+        <select name="sex" id="sex-select">
+          <option value="">--Please choose an option--</option>
+          <option value="m">M</option>
+          <option value="f">F</option>
+        </select>
+      </p>
+
+      <button id="btn" disabled type="submit">Print</button>
+    </form>
+    <p id="success" class="message">Success!!</p>
+    <p id="failure" class="message">
+      Something went wrong. Refresh the page and try again.
+    </p>
+
+    <script async src="./index.js"></script>
+  </body>
+</html>

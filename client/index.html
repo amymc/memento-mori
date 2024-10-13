@@ -35,11 +35,12 @@
 
       <button id="btn" disabled type="submit">Print</button>
     </form>
-    <p id="success" class="message">Success!!</p>
+    <p id="success" class="message">Printing your memento</p>
     <p id="failure" class="message">
       Something went wrong. Refresh the page and try again.
     </p>
 
-    <script async src="./index.js"></script>
+    <script src="./vendor/papaparse.min.js"></script>
+    <script type="module" src="./index.js"></script>
   </body>
 </html>

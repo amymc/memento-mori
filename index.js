@@ -1,3 +1,21 @@
+let expectancyData = { m: {}, f: {} };
+
+Papa.parse("./data/expectancy.csv", {
+  download: true,
+  complete: function ({ data }) {
+    // skip first array because it's the title row
+    for (let i = 1; i < data.length - 1; i++) {
+      // 0 index is the m/f column
+      // 1 index is the age column
+      // 2 index is the expectancy column
+
+      // rounding expectancy value to nearest 0.5
+      const roundedExpectancy = Math.round(data[i][2] * 2) / 2;
+      expectancyData[data[i][0]][data[i][1]] = roundedExpectancy;
+    }
+  },
+});
+
 const form = document.getElementById("form");
 form.addEventListener("submit", submit);
 
@@ -20,19 +38,24 @@ function submit(e) {
   e.preventDefault();
   const formData = new FormData(form);
 
-  let partitipantData = {};
+  let participantData = {};
   for (const pair of formData.entries()) {
-    partitipantData[pair[0]] = pair[1];
+    participantData[pair[0]] = pair[1];
   }
+
+  console.log({
+    name: participantData.name,
+    expectancy: expectancyData[participantData.sex][participantData.age],
+  });
 
   fetch("https://bedbug-driven-cow.ngrok-free.app/participants", {
     method: "POST",
-    body: JSON.stringify(partitipantData),
+    body: JSON.stringify({
+      name: participantData.name,
+      expectancy: expectancyData[participantData.sex][participantData.age],
+    }),
     mode: "cors",
     cache: "default",
-    headers: {
-      "Content-type": "application/json",
-    },
   }).then((response) => {
     console.log(response.status);
     if (response.status === 200) {

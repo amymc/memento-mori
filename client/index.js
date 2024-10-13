@@ -29,7 +29,11 @@ nameField.onkeyup = checkField;
 ageField.onkeyup = checkField;
 
 function checkField() {
-  if (select.value !== "" && nameField.value !== "" && ageField.value !== "") {
+  if (
+    select.value !== "" &&
+    DOMPurify.sanitize(nameField.value) !== "" &&
+    ageField.value !== ""
+  ) {
     document.getElementById("btn").disabled = false;
   }
 }
@@ -40,13 +44,8 @@ function submit(e) {
 
   let participantData = {};
   for (const pair of formData.entries()) {
-    participantData[pair[0]] = pair[1];
+    participantData[pair[0]] = DOMPurify.sanitize(pair[1]);
   }
-
-  console.log({
-    name: participantData.name,
-    expectancy: expectancyData[participantData.sex][participantData.age],
-  });
 
   fetch("https://bedbug-driven-cow.ngrok-free.app/participants", {
     method: "POST",
@@ -57,7 +56,6 @@ function submit(e) {
     mode: "cors",
     cache: "default",
   }).then((response) => {
-    console.log(response.status);
     if (response.status === 200) {
       form.style.display = "none";
       document.getElementById("success").style.display = "block";

@@ -30,9 +30,6 @@ void handleForm() {
  
   DynamicJsonDocument doc(1024);
 
-  Serial.println("POST");
-  Serial.println(server.arg("plain"));
-
   String input = server.arg("plain");
   deserializeJson(doc, input);
 
@@ -56,11 +53,11 @@ void handleForm() {
 
 }
 
-void handleListFiles() {
-  Serial.println("list files");
-  server.sendHeader("Cache-Control", "no-cache");
-  server.send(200, "text/javascript; charset=utf-8", "result");
-}  // handleListFiles()
+// void handleListFiles() {
+//   Serial.println("list files");
+//   server.sendHeader("Cache-Control", "no-cache");
+//   server.send(200, "text/javascript; charset=utf-8", "result");
+// }  // handleListFiles()
 
 void setup()
 {
@@ -82,7 +79,7 @@ void setup()
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
 
-  server.on("/$list", HTTP_GET, handleListFiles);
+  // server.on("/$list", HTTP_GET, handleListFiles);
   server.on("/participants", HTTP_POST, handleForm);
 
   server.enableCORS(true);

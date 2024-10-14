@@ -25,7 +25,7 @@ String grimReaper = "             ___\n"
                     "           |       \\\\\n"
                     "           |________|\\\n";
 
-void handleForm() {
+int handleForm() {
   server.send(200, "text/plain", "success message");
  
   DynamicJsonDocument doc(1024);
@@ -35,7 +35,10 @@ void handleForm() {
 
   const String name = doc["name"];
   const String expectancy = doc["expectancy"];
+  return printMemento(name, expectancy);
+}
 
+int printMemento(String name, String expectancy) {
   String years = expectancy + " years";
   if (expectancy == "1"){
     years = expectancy + " year";
@@ -51,6 +54,7 @@ void handleForm() {
   Serial.println("********************************");
   Serial.println("********************************");
 
+  return 0;
 }
 
 // void handleListFiles() {
